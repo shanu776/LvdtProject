@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="WEB-INF/jsp/layout/layout.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+	     <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/layout/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />  
+	</definition>
+	
+	<definition name="home" extends="base.definition">
+	<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="lvdtReadings" template="/WEB-INF/jsp/LvdtReadings.jsp"></definition>
+	
+	<definition name="loginPage" template="/WEB-INF/jsp/login.jsp"></definition>
+	
+	<definition name="changePass" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/changePassword.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="addPartSetting" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/addPartSetting.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="addModel" template="/WEB-INF/jsp/addModel.jsp"></definition>
+	
+	
+</tiles-definitions>

@@ -1,0 +1,62 @@
+html {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+}
+
+body {
+   margin: 0px;
+   min-height: 100%;
+   width: 100%;
+}
+
+/* ================================HeaderPart=============================== */
+
+.header{
+	width:100%;
+	height: 70px;
+	background-color: #00e6e6;
+}
+.companyLogo{
+	float:left;
+	margin-left:3%;
+	margin-top:1%;
+	top:3px;
+	width:60%;
+	height: 40px;
+	/* border: 1px solid;  */
+}
+.headerRight{
+	float: right;
+	margin-right:3%;
+	margin-top:.5%;
+	width: 10%;
+	height: 60px;
+	border: 1px solid;
+}
+
+
+/* ================================MenuPart=============================== */
+
+.menu{
+	height: 580px;
+	border-right: 1px solid;
+}
+
+#menu2{
+border: 1px solid;
+height: 40px; 
+width: 100%; 
+margin-top:3%; 
+background-color:#00e6e6; 
+/* display: none; */
+}
+/* ================================homePage=============================== */
+
+.home{
+	float: left;
+	width: 100%;
+	height: 590px;
+	/* border: 1px solid; */
+		
+}

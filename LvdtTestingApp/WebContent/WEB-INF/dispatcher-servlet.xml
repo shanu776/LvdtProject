@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:mvc="http://www.springframework.org/schema/mvc" xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+<mvc:annotation-driven/>
+
+<bean id="viewResolver"
+class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<property name="viewClass">
+		<value>
+			org.springframework.web.servlet.view.tiles2.TilesView
+		</value>
+	</property>
+</bean>
+
+<bean id="tilesConfigurer"
+	class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<property name="definitions">
+		<list>
+			<value>/WEB-INF/tiles.xml</value>
+		</list>
+	</property>
+</bean>
+
+ <context:component-scan base-package="com.lvdtTest"></context:component-scan>
+     
+<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/lvdttest" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean>
+
+ 
+<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.lvdtTest.bean.PartSetting</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+	</bean>
+
+    <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+        <property name="maxUploadSize" value="10000000" />
+    </bean> 
+
+<bean id="PartSettingDao" class="com.lvdtTest.dao.PartSettingDaoClass">
+	<property name="sessionDataFactory" ref="mySessionFactory" />
+</bean>
+    
+</beans>
