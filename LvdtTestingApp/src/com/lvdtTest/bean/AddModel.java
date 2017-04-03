@@ -14,13 +14,13 @@ public class AddModel {
 	@GeneratedValue
 	@Column(name="id")
 	private Integer id;
-	@Column(name="model_no")
+	@Column(name="model_no",length = 30)
 	private String model_no;
-	@Column(name="customer_name")
+	@Column(name="customer_name",length = 40)
 	private String customer_name;
-	@Column(name="model_name")
+	@Column(name="model_name",length = 40)
 	private String model_name;
-	@Column(name="job_entry_type")
+	@Column(name="job_entry_type",length = 30)
 	private String job_entry_type;
 	
 	

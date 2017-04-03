@@ -41,6 +41,13 @@ class="org.springframework.web.servlet.view.UrlBasedViewResolver">
  
 <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
+		<property name="annotatedClasses">
+		<list>
+			<value>com.lvdtTest.bean.PartSetting</value>
+			<value>com.lvdtTest.bean.AddModel</value>
+			<value>com.lvdtTest.bean.ProbeCalibration</value>
+		</list>
+		</property>
 		<property name="packagesToScan">
 			<list>
 				<value>com.lvdtTest.bean.PartSetting</value>
@@ -49,6 +56,8 @@ class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>
@@ -58,8 +67,12 @@ class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="maxUploadSize" value="10000000" />
     </bean> 
 
-<bean id="PartSettingDao" class="com.lvdtTest.dao.PartSettingDaoClass">
-	<property name="sessionDataFactory" ref="mySessionFactory" />
-</bean>
+	<bean id="PartSettingDao" class="com.lvdtTest.dao.PartSettingDaoClass">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="ProbeCalibrationDao" class="com.lvdtTest.dao.ProbeCalibrationDaoClass">
+		<property name="sessionDataFactory" ref="mySessionFactory" />
+	</bean>
     
 </beans>

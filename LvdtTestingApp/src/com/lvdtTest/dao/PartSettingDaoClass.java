@@ -41,4 +41,23 @@ public class PartSettingDaoClass implements PartSettingDao{
 		hibernateTemplate.saveOrUpdate(addModel);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<AddModel> listModel() {
+		// TODO Auto-generated method stub
+		return (List<AddModel>)hibernateTemplate.find("from AddModel");
+	}
+
+	@Override
+	public void deleteModel() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PartSetting getPartSetting(Integer id) {
+		// TODO Auto-generated method stub
+		return hibernateTemplate.get(PartSetting.class, id);
+	}
+
 }

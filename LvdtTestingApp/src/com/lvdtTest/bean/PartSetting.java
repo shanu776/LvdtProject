@@ -15,55 +15,58 @@ public class PartSetting {
 	@Column(name="id")
 	private Integer id;
 	
-	@Column(name="model_no")
+	@Column(name="model_no",length = 40)
 	private String model_no;
 	
-	@Column(name="model_name")
+	@Column(name="model_name",length = 40)
 	private String model_name;
 	
-	@Column(name="parameter_name")
+	@Column(name="parameter_name",length = 40)
 	private String parameter_name;
 	
-	@Column(name="parameter_no")
+	@Column(name="parameter_no",length = 40)
 	private String parameter_no;
 	
-	@Column(name="dia")
+	@Column(name="dia",length = 40)
 	private String dia;
 	
-	@Column(name="height")
+	@Column(name="height",length = 40)
 	private String height;
 	
-	@Column(name="apg_no")
+	@Column(name="apg_no",length = 40)
 	private String apg_no;
 	
-	@Column(name="iteration")
+	@Column(name="iteration",length = 40)
 	private String iteration;
 	
-	@Column(name="depth_of_set")
+	@Column(name="depth_of_set",length = 40)
 	private String depth_of_set;
 	
-	@Column(name="token_limit")
-	private String token_limit;
+	@Column(name="offset",length = 40)
+	private String offset;
 	
-	@Column(name="no_of_master")
+	@Column(name="tolerance_limit",length = 40)
+	private String tolerance_limit;
+	
+	@Column(name="no_of_master",length = 40)
 	private String no_of_master;
 	
-	@Column(name="spec")
+	@Column(name="spec",length = 40)
 	private String spec;
 	
-	@Column(name="usl")
+	@Column(name="usl",length = 40)
 	private String usl;
 	
-	@Column(name="lsl")
+	@Column(name="lsl",length = 40)
 	private String lsl;
 	
-	@Column(name="master_dim")
+	@Column(name="master_dim",length = 40)
 	private String master_dim;
 	
-	@Column(name="leaxt_count")
+	@Column(name="least_count",length = 40)
 	private String least_count;
 	
-	@Column(name="color_code")
+	@Column(name="color_code",length = 20)
 	private String color_code;
 
 	public Integer getId() {
@@ -146,12 +149,12 @@ public class PartSetting {
 		this.depth_of_set = depth_of_set;
 	}
 
-	public String getToken_limit() {
-		return token_limit;
+	public String getTolerance_limit() {
+		return tolerance_limit;
 	}
 
-	public void setToken_limit(String token_limit) {
-		this.token_limit = token_limit;
+	public void setTolerance_limit(String tolerance_limit) {
+		this.tolerance_limit = tolerance_limit;
 	}
 
 	public String getNo_of_master() {
@@ -209,6 +212,15 @@ public class PartSetting {
 	public void setColor_code(String color_code) {
 		this.color_code = color_code;
 	}
+
+	public String getOffset() {
+		return offset;
+	}
+
+	public void setOffset(String offset) {
+		this.offset = offset;
+	}
+	
 	
 	
 	

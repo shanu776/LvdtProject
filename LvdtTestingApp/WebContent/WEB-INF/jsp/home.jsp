@@ -35,7 +35,7 @@ border: 1px solid;
 
 <script type="text/javascript">
 $(function(){
-	setInterval(oneSecondFunction, 200);
+	setInterval(oneSecondFunction, 2000);
 
 	});
  

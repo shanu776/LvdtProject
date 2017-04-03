@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <style type="text/css">
 .dropdown .dropdown-submenu{
@@ -41,7 +42,7 @@ padding: 0px;
 		      	
 		      </li>	
 		      	     
-		      <li class="dropdown-submenu"><a class="test1" data-hover="dropdown">Measurement</a>
+		      <li class="dropdown-submenu"><a href="measurement.zzz">Measurement</a>
 		      	<!-- <ul class="dropdown-menu" style="background-color: #ccffff;">
 		      	<li><a>=======</a></li>
 		      	<li><a>=======</a></li>
@@ -86,7 +87,7 @@ padding: 0px;
 		      	<li><a href="partSettingForm.zzz">Part Setup</a></li>
 		      	<li><a>Tolerance Limit</a></li>
 		      	<li><a>Set Probes</a></li>
-		      	<li><a>Probe Calibration</a></li>
+		      	<li><a href="probecalibration.zzz">Probe Calibration</a></li>
 		      	<li><a>IO Test</a></li>
 		      	<li><a>Mastering Interval Setting</a></li>
 		      	<li><a>Comm. Port Setting</a></li>
