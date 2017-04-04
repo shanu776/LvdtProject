@@ -348,11 +348,12 @@ width: 100%;
 
 <script>
  $(function(){
-	setInterval(getReadings, 200);
+	setInterval(getReadings, 2000);
 	}); 
 function getReadings(){
 	$.ajax({url: "getreadings.zzz", 
     	success: function(result){
+    		
     	$(".form-control").val(result);    	
     }
     });

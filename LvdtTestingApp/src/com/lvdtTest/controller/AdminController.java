@@ -145,10 +145,9 @@ public class AdminController {
 		Integer id=Integer.parseInt(request.getParameter("id"));
 		String ref2=request.getParameter("ref2");
 		if(probeCalibrationDao.checksetting(id)){
-			ProbeCalibration p=probeCalibrationDao.getSetting(id);			
+			/*ProbeCalibration p=probeCalibrationDao.getSetting(id);	*/		
 			prob=probeCalibrationDao.getSetting(id);
-			prob.setRef2(ref2);
-			prob.setScaleFactor(scaleFactor(p.getRef1(), ref2));
+			prob.setRef2(ref2);			
 		}
 		else {
 			prob.setId(id);
@@ -167,6 +166,7 @@ public class AdminController {
 		if(probeCalibrationDao.checksetting(id)){
 			prob=probeCalibrationDao.getSetting(id);
 			prob.setNominalval(nominal);
+			prob.setScaleFactor(scaleFactor(prob.getRef1(), prob.getRef2(),nominal));
 		}
 		else {
 			prob.setId(id);
@@ -188,14 +188,15 @@ public class AdminController {
 		return new ModelAndView("measurement");
 	}
 	
-	public String scaleFactor(String ref1,String  ref2){
+	public String scaleFactor(String ref1,String  ref2,String nominal){
 		String scalefactor;
 		Integer r1=Integer.parseInt(ref1);
 		Integer r2=Integer.parseInt(ref2);
+		Integer nom=Integer.parseInt(nominal);
 		DecimalFormat decimalFormat = new DecimalFormat("#.##################");
 		/*System.out.println(r2-r1);
 		System.out.println((double)2/(r2-r1));*/
-		scalefactor=Double.toString(Double.valueOf(decimalFormat.format(((double)2/(r2-r1)))));
+		scalefactor=Double.toString(Double.valueOf(decimalFormat.format(((double)nom/(r2-r1)))));
 		return scalefactor;
 	}
 /*========================================================Measurement Starts Here===================================================*/
@@ -209,12 +210,31 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="measurementGraph.zzz")
-	public ModelAndView measurementGraph(@RequestParam("id") Integer id){
+	@ResponseBody
+	public Map<String,Object> measurementGraph(@RequestParam("id") Integer id){
 		Map<String,Object> model= new HashMap<>();
-		model.put("setting", partSettingDao.getPartSetting(id));
-		PartSetting p=partSettingDao.getPartSetting(id);
-		System.out.println(p.getModel_name()+"  "+p.getModel_name());
-		return new ModelAndView("measurementGraph",model);
+		/*model.put("setting", partSettingDao.getPartSetting(id));*/
+		List<PartSetting> p=partSettingDao.getPartSetting(id);
+		for(PartSetting part:p){
+			model.put("setting", part);
+		}
+		return model;/*new ModelAndView("measurementGraph",model)*/
+	}
+	
+	@RequestMapping(value="probreadingMeasurement")
+	@ResponseBody
+	public Map<String,Object> probreadingMeasurement(){
+		Map<String, Object> model=new HashMap<>();
+		if((message!="")&& (message!=null)){				
+			List<String> listfromdevice=new ArrayList<>();	
+			StringTokenizer st=new StringTokenizer(message, ",");		
+			while ( st.hasMoreTokens() ) {
+				listfromdevice.add(st.nextToken());
+				}	
+			model.put("reading", listfromdevice.get(2));
+			model.put("probe", listfromdevice.get(0));
+		}		
+		return model;
 	}
 	
 	@RequestMapping(value="measuredReadings")

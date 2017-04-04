@@ -127,6 +127,11 @@ cursor: pointer;
 	</div>		
 	
 	<div class="form-group" style=" float:left; width: 20%; margin-left: 6%;">
+	  <label for="usr">deviceReading:</label>
+	  <form:input path="deviceReading" type="text" class="form-control" id="offset" placeholder="deviceReading" readonly="true"/>
+	</div>	
+	
+	<div class="form-group" style=" float:left; width: 20%; margin-left: 6%;">
 	  <label for="usr">Offset:</label>
 	  <form:input path="offset" type="text" class="form-control" id="usr" placeholder="OffSet"/>
 	</div>	
@@ -184,7 +189,7 @@ cursor: pointer;
 	
 	<div class="form-group" style=" float:left; width: 20%; margin-left: 6%;">
 	  <label for="usr">Color Code:</label>
-	  <form:input path="color_code" class="form-control" id="usr" placeholder=""/>
+	  <form:input path="color_code" class="form-control" id="usr" placeholder="ColorCode"/>
 	</div>	
 	
 </div>
@@ -265,6 +270,18 @@ $('#close').on('click',function(){
 	$('.PartSettingForm').css("display","block");
 	$('.mainBody').css("background-color","white");
 })
+
+$(function(){
+	setInterval(getReadings,200);
+});
+function getReadings(){
+	$.ajax({url: "getreadings.zzz", 
+    	success: function(result){
+    		/* alert(result); */
+    	$("#offset").val(result);     	 	
+    }
+    });
+};
 </script>
 
 </body>

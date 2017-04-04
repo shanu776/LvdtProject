@@ -55,9 +55,9 @@ public class PartSettingDaoClass implements PartSettingDao{
 	}
 
 	@Override
-	public PartSetting getPartSetting(Integer id) {
+	public List<PartSetting> getPartSetting(Integer id) {
 		// TODO Auto-generated method stub
-		return hibernateTemplate.get(PartSetting.class, id);
+		return hibernateTemplate.find("from PartSetting where id="+id);
 	}
 
 }
